@@ -1,0 +1,48 @@
+﻿@model List<Person>
+
+
+@{
+    ViewData["Title"] = "Display";
+    string[] TableHeaders = new string[] {"Person Name"
+                  ,"Person Surname"
+                  ,"Person AGE"
+                  ,"Person Gender"
+                  ,"Person City"};
+}
+
+<div class="table">
+    
+    <table id="myTable" class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr >
+                @{
+                    foreach (var head in TableHeaders)
+                    {
+                                        <th>
+                                            @head
+                                        </th>
+                    }
+                }
+            </tr>
+        </thead>
+
+        
+        <tbody>
+            @{
+                if (Model != null)
+                {
+                    foreach (var Data in Model)
+                    {
+                                        <tr>
+                                            <td>@Data.PersonName</td>
+                                            <td>@Data.PersonSurname</td>
+                                            <td>@Data.PersonAge</td>
+                                            <td>@Data.PersonGender</td>
+                                            <td>@Data.PersonCity</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

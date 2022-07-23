@@ -1,0 +1,171 @@
+﻿@{
+    ViewData["Title"] = "CHARTS:";
+}
+<h1>@ViewData["Title"]</h1>
+
+<br />
+<br />
+
+<div>
+  <canvas id="myChart" ></canvas>
+</div>
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script>
+  const labels = [
+    '0-15',
+    '15-30',
+    '30-45',
+    '45+',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Age Distribution',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [2,9,8,7],
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+</script>
+
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+<br />
+<br />
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+  <div id="container"></div>
+
+
+    <script>
+
+        Highcharts.chart('container', {
+                  chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                  },
+                  title: {
+                    text: 'Gender Ratio'
+                  },
+                  tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                  },
+                  accessibility: {
+                    point: {
+                      valueSuffix: '%'
+                    }
+                  },
+                  plotOptions: {
+                    pie: {
+                      allowPointSelect: true,
+                      cursor: 'pointer',
+                      dataLabels: {
+                        enabled: false
+                      },
+                      showInLegend: true
+                    }
+                  },
+                  series: [{
+                    name: 'Genders',
+                    colorByPoint: true,
+                    data: [{
+                      name: 'Male',
+                      y: 53.84,
+                      sliced: true,
+                      selected: true
+                    }, {
+                      name: 'Female',
+                      y:46.16
+        
+                    }]
+                  }]
+                });
+    </script>
+
+
+
+
+
+
+
+    @*<script>
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/Privacy",
+            data: JSON.stringify({}),
+            contentType: "application/json:charset=utf-8",
+            dataType: "json",
+            success: function (json) {
+                var values = json.GenderCount;
+                var malecount = parseInt(values[0]);
+                var femalecount = parseInt(values[1]);
+
+                Highcharts.chart('container', {
+                  chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                  },
+                  title: {
+                    text: 'Gender Ratio'
+                  },
+                  tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                  },
+                  accessibility: {
+                    point: {
+                      valueSuffix: '%'
+                    }
+                  },
+                  plotOptions: {
+                    pie: {
+                      allowPointSelect: true,
+                      cursor: 'pointer',
+                      dataLabels: {
+                        enabled: false
+                      },
+                      showInLegend: true
+                    }
+                  },
+                  series: [{
+                    name: 'Genders',
+                    colorByPoint: true,
+                    data: [{
+                      name: 'Male',
+                      y: malecount,
+                      sliced: true,
+                      selected: true
+                    }, {
+                      name: 'Female',
+                      y:femalecount
+        
+                    }]
+                  }]
+                });
+
+            }
+        });
+
+    </script>*@
+</figure>
